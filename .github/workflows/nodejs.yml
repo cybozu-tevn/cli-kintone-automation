@@ -13,7 +13,7 @@ jobs:
   test:
     strategy:
       matrix:
-        platform: [ macos-latest, windows-latest ]
+        platform: [ macos-latest ]
         node-version: [ 12.x ]
     runs-on: ${{ matrix.platform }}
 
@@ -24,4 +24,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: npm run test
+    - name: test importWithAuthenticateUsernamePassword.test
+      run: npm run test src/tests/importWithOption/importWithAuthenticateUsernamePassword.test.js
